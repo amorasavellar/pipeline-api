@@ -1,6 +1,7 @@
 from tinydb import TinyDB
+from datetime import datetime
 import requests
-import datetime
+import time
 
 def extract():
     
@@ -32,7 +33,9 @@ def load(dados_tratados):
 
 if __name__ == "__main__":
     
-    dados_json = extract()
-    dados_tratados = transform(dados_json)
-    load(dados_tratados)
+    while True:
+        dados_json = extract()
+        dados_tratados = transform(dados_json)
+        load(dados_tratados)
+        time.sleep(5)
     
